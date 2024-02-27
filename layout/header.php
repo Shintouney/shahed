@@ -38,10 +38,18 @@
               <?php endif; ?>
               <?php echo isset($_SESSION['logged_user']) ? htmlspecialchars($_SESSION['logged_user']) : 'Connexion'; ?>
             </a>
-            <div class="sous-menu" id="login-sous-menu">
-                <a href="connexion-et-profil/connexion.php">Se connecter</a>
-                <a href="creation.php">Créer un compte</a>
+          <?php if (isset($_SESSION['logged_user'])) { ?>
+              <div class="sous-menu" id="login-sous-menu">
+                  <a href="connexion-et-profil/connexion.php">Se connecter</a>
+                  <a href="pages/creation.php">Créer un compte</a>
+              </div>
             </div>
-          </div>
+            <?php } else { ?>
+              <div class="sous-menu" id="login-sous-menu">
+                  <a href="../connexion-et-profil/profil.php">Profil</a>
+                  <a href="creation.php">Se deconnecter</a>
+              </div>
+            </div>
+            <?php } ?>
       </div>
   </header>
