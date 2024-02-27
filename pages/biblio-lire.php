@@ -1,58 +1,7 @@
 <?php
-    session_start();
+session_start();
 ?>
-
-<!doctype html>
-<html>
-	<head>
-		<title>Eveil ZooLangues</title>
-        <link rel="icon" type="image/x-icon" href="../medias/logo-petit.png">
-		<meta charset="utf-8" />
-        <!--carousel code-bootstrap-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <!--end boostrap-->
-        <link rel="StyleSheet" type="text/css" href="../style/style.css"/>
-    
-    </head>
-    <body>
-        <header>
-            <div id="logo">
-                <a href="../index.html">
-                    <img src="../medias/Logo.png" height="90">
-                </a>
-            </div>
-            <div class="deroule-menu" id="ressources">
-                <a href="ressources.html"><button class="deroule-menu">Ressources</button></a>
-                <div class="sous-menu">
-                    <a href="ressources.html#approches-plurielles">Les Approches Plurielles</a>
-                    <a href="ressources.html#evl">L'éveil aux langues</a>
-                    <a href="ressources.html#applications">Contextes d'applicaiton</a>
-                    <a href="ressources.html#plus-loin">Ressources pour aller plus loin</a>
-                </div>
-            </div>
-            <a href="explication.html" id="explication"><button>Notre Site</button></a>
-            <div class="deroule-menu" id="biblio">
-                <a href="biblio.html"><button class="deroule-menu">Bibliothèque</button></a>
-                <div class="sous-menu">
-                    <a href="biblio-lire.html">Commencer à lire</a>
-                </div>
-            </div>
-            <div id="login">       
-                <div  class="deroule-menu">     
-                    <a href="connexion-et-profil/profil.php">
-                        <img src="../medias/connexion.png" alt="Se connecter" height="50" width="50">
-                        Connexion
-                    </a>
-                    <div class="sous-menu" id="login-sous-menu">
-                        <a href="connexion-et-profil/connexion.php">Se connecter</a>
-                        <a href="connexion-et-profil/creation.php">Créer un compte</a>
-                    </div>
-                </div>
-            </div>
-        </header>
+<?php include('../layout/header.php'); ?>
         <main>
             <section class="biblio-lire">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
