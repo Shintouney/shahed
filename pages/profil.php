@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once '../../db_config.php'; // Assumes this file correctly sets up the mysqli connection
+require_once '../db_config.php'; // Assumes this file correctly sets up the mysqli connection
 
 if (isset($_SESSION['logged_user'])):
 echo $_SESSION['erreur_creation'];
 ?>
 
-<?php include('../../layout/header.php'); ?>
+<?php include('header.php'); ?>
 
 <main>
     <h1>Mon profil</h1>

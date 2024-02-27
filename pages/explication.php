@@ -1,7 +1,7 @@
 <?php
     session_start();
 ?>
-<?php include('../layout/header.php'); ?>
+<?php include('header.php'); ?>
         <main>
             <div id="explication-haut">
             <h1>Bienvenue à EveilZooLangues !</h1>

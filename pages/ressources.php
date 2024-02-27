@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-<?php include('../layout/header.php'); ?>
+<?php include('header.php'); ?>
 
 <main id="top">
     <div id="image-ressources" >

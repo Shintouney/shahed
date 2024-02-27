@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../db_config.php';
+require_once '../db_config.php';
 
 if (isset($_POST['pseudoConnexion']) && isset($_POST['mdpConnexion'])) {
     $pseudoConnexion = $_POST['pseudoConnexion']; // Directly use the POST value

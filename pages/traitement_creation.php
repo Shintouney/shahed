@@ -1,7 +1,7 @@
   <?php
   session_start();
-  require_once '../../db_config.php'; // Adjust the path as necessary
-  require_once '../../vendor/autoload.php'; // Adjust the path as necessary
+  require_once '../db_config.php'; // Adjust the path as necessary
+  require_once '../vendor/autoload.php'; // Adjust the path as necessary
 
   // Cloudinary configuration
   use Cloudinary\Configuration\Configuration;

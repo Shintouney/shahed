@@ -20,19 +20,19 @@
                 </a>
             </div>
             <div class="deroule-menu" id="ressources">
-                <a href="../ressources.php"><button class="deroule-menu">Ressources</button></a>
+                <a href="ressources.php"><button class="deroule-menu">Ressources</button></a>
                 <div class="sous-menu">
-                    <a href="../ressources.php#approches-plurielles">Les Approches Plurielles</a>
-                    <a href="../ressources.php#evl">L'éveil aux langues</a>
-                    <a href="../ressources.php#applications">Contextes d'applicaiton</a>
-                    <a href="../ressources.php#plus-loin">Ressources pour aller plus loin</a>
+                    <a href="ressources.php#approches-plurielles">Les Approches Plurielles</a>
+                    <a href="ressources.php#evl">L'éveil aux langues</a>
+                    <a href="ressources.php#applications">Contextes d'applicaiton</a>
+                    <a href="ressources.php#plus-loin">Ressources pour aller plus loin</a>
                 </div>
             </div>
-            <a href="../explication.php" id="explication"><button>Notre Site</button></a>
+            <a href="explication.php" id="explication"><button>Notre Site</button></a>
             <div class="deroule-menu" id="biblio">
-                <a href="../biblio.php"><button class="deroule-menu">Bibliothèque</button></a>
+                <a href="biblio.php"><button class="deroule-menu">Bibliothèque</button></a>
                 <div class="sous-menu">
-                    <a href="../biblio-lire.php">Commencer à lire</a>
+                    <a href="biblio-lire.php">Commencer à lire</a>
                 </div>
             </div>            <div id="login">       
                 <div  class="deroule-menu">     
@@ -90,7 +90,7 @@
         
             
     </body>
-    <script src="../../style/style.js"></script>
+    <script src="../style/style.js"></script>
 </html>
 <?php else : ?>
 

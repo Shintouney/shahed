@@ -2,14 +2,15 @@
 <html lang="fr">
 <head>
     <title>Eveil ZooLangues</title>
-    <link rel="StyleSheet" type="text/css" href="../../style/style.css"/>
+    <link rel="StyleSheet" type="text/css" href="../style/style.css"/>
+      <link rel="icon" type="image/x-icon" href="../medias/logo-petit.png">
     <meta charset="utf-8" />
 </head>
 <body>
   <header>
       <div id="logo">
-          <a href="../../index.php">
-              <img src="../../medias/Logo.png" height="90">
+          <a href="../index.php">
+              <img src="../medias/Logo.png" height="90">
           </a>
       </div>
       <div class="deroule-menu" id="ressources">
@@ -30,26 +31,24 @@
       </div>
         <div id="login">
           <div  class="deroule-menu">
-            <a href="connexion-et-profil/connexion.php">
+            <a href="connexion.php">
               <?php if(isset($_SESSION['logged_user'])): ?>
-                  <img src="connexion-et-profil/avatar.php" alt="Avatar" height="50" width="50">
+                  <img src="avatar.php" alt="Avatar" height="50" width="50">
               <?php else: ?>
-                  <img src="../../medias/connexion.png" alt="Se connecter" height="50" width="50">
+                  <img src="../medias/connexion.png" alt="Se connecter" height="50" width="50">
               <?php endif; ?>
               <?php echo isset($_SESSION['logged_user']) ? htmlspecialchars($_SESSION['logged_user']) : 'Connexion'; ?>
             </a>
           <?php if (isset($_SESSION['logged_user'])) { ?>
-              <div class="sous-menu" id="login-sous-menu">
-                  <a href="connexion-et-profil/connexion.php">Se connecter</a>
-                  <a href="pages/creation.php">Créer un compte</a>
-              </div>
+            <div class="sous-menu" id="login-sous-menu">
+                <a href="profil.php">Profil</a>
+                <a href="profil.php">Se deconnecter</a>
             </div>
             <?php } else { ?>
               <div class="sous-menu" id="login-sous-menu">
-                  <a href="../connexion-et-profil/profil.php">Profil</a>
-                  <a href="creation.php">Se deconnecter</a>
+                  <a href="connexion.php">Se connecter</a>
+                  <a href="creation.php">Créer un compte</a>
               </div>
-            </div>
             <?php } ?>
       </div>
   </header>
