@@ -82,6 +82,10 @@
         <button id="submitProgress">J'ai terminé</button>
 				<input type="hidden" name="module" value="module1" />
 			</form>
+    <form action="traitement_progression_undo.php" method="post">
+      <button id="submitProgress">J'ai pas terminé</button>
+      <input type="hidden" name="module" value="module1" />
+    </form>
     <?php } ?>
     <div class="module-container">
   <script>
