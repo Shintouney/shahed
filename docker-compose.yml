@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  app:
+    ports:
+      - "8001:8001"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: tail -f /dev/null
+    volumes:
+      - .:/home/soulphysician/app
+    depends_on:
+          - db
+          - phpmyadmin
+
+  db:
+    image: mariadb:latest # or a specific version that supports ARM64
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: arm64v8/phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+volumes:
+  db_data:
