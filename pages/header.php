@@ -42,7 +42,7 @@
           <?php if (isset($_SESSION['logged_user'])) { ?>
             <div class="sous-menu" id="login-sous-menu">
                 <a href="profil.php">Profil</a>
-                <a href="profil.php">Se deconnecter</a>
+                <a href="deconnexion.php">Se deconnecter</a>
             </div>
             <?php } else { ?>
               <div class="sous-menu" id="login-sous-menu">
