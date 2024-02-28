@@ -45,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($stmt->execute()) {
             // Mise à jour réussie
             $_SESSION['modifOK'] = "Votre profil a été mis à jour avec succès.";
+            $_SESSION['logged_user'] = $pseudo;
         } else {
             // Échec de la mise à jour
             $_SESSION['modifNON'] = "Erreur lors de la mise à jour du profil.";
