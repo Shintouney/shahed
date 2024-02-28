@@ -1,56 +1,59 @@
 <?php
 session_start();
 
-// Connexion à la base de données
-try {
+$_SESSION['post_modif'] = "Vos informations ont bien été modifié";
 
-    $pdo = new PDO('mysql:host=localhost:3306;dbname=sadanic;charset=utf8', 'sadanic', 'Raga54543//*');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require_once '../db_config.php';
 
-} catch (PDOException $e) {
-
-    die("Erreur de connexion à la base de données: " . $e->getMessage());
-
+if (!isset($_SESSION['logged_user'])) {
+    header('Location: connexion.php');
+    exit();
 }
 
-// on nettoye les données récupérées (ça ajoute des guillements simples ??)
-function nettoyer_donnees($donnees) {
-    global $pdo;
-    return $pdo->quote(htmlspecialchars(trim($donnees)));
-}
+// Traitement du formulaire
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $mysqli = getDBConnection();
 
-// Récupère les valeurs envoyées par le formulaire
-$nom = nettoyer_donnees($_POST['nom']);
-$prenom = nettoyer_donnees($_POST['prenom']);
-$classe = nettoyer_donnees($_POST['classe']);
+    $pseudo = $_POST['pseudo'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $nom = $_POST['nom'] ?? '';
+    $prenom = $_POST['prenom'] ?? '';
+    $date = $_POST['date'] ?? '';
+    $classe = $_POST['classe'] ?? '';
+    $avatar = $_POST['avatar'] ?? '';
 
+    if (empty($pseudo) || empty($nom) || empty($prenom) || empty($date) || empty($classe)) {
+        $_SESSION['modifNON'] = "Tous les champs requis doivent être remplis.";
+        header('Location: profil.php');
+        exit();
+    }
 
-// Requête SQL pour mettre à jour les informations de l'utilisateur
-$sql = "UPDATE users SET nom = :nom, prenom = :prenom, classe = :classe WHERE pseudo = :logged_user_pseudo";
+    if (!empty($password)) {
+        $password = password_hash($password, PASSWORD_DEFAULT); // Hashage du mot de passe
+        $query = "UPDATE users SET pseudo=?, password=?, nom=?, prenom=?, date=?, classe=?, avatar=? WHERE pseudo=?";
+    } else {
+        $query = "UPDATE users SET pseudo=?, nom=?, prenom=?, date=?, classe=?, avatar=? WHERE pseudo=?";
+    }
+    
+    if ($stmt = $mysqli->prepare($query)) {
+        if (!empty($password)) {
+            $stmt->bind_param("ssssssss", $pseudo, $password, $nom, $prenom, $date, $classe, $avatar, $_SESSION['logged_user']);
+        } else {
+            $stmt->bind_param("sssssss", $pseudo, $nom, $prenom, $date, $classe, $avatar, $_SESSION['logged_user']);
+        }
 
-// Préparation de la requête
-$stmt = $pdo->prepare($sql);
-
-// Liaison des paramètres
-$stmt->bindParam(':nom', $nom);
-$stmt->bindParam(':prenom', $prenom);
-$stmt->bindParam(':classe', $classe);
-$stmt->bindParam(':logged_user_pseudo', $_SESSION['logged_user']);
-
-// Exécution de la requête
-try {
-
-    $stmt->execute();
-
-    $_SESSION['modifOK'] = 'Informations mises à jour avec succès !';
-    $_SESSION['logged_user'] = $pseudo;
+        if ($stmt->execute()) {
+            // Mise à jour réussie
+            $_SESSION['modifOK'] = "Votre profil a été mis à jour avec succès.";
+        } else {
+            // Échec de la mise à jour
+            $_SESSION['modifNON'] = "Erreur lors de la mise à jour du profil.";
+        }
+        $stmt->close();
+    }
+    $mysqli->close();
+    // Redirection vers la page de profil
     header('Location: profil.php');
-
-} catch (PDOException $e) {
-
-    $_SESSION['modifNON'] = 'Erreur lors de la mise à jour des informations: ' . $e->getMessage();
-    $_SESSION['logged_user'] = $pseudo;
-    header('Location: profil.php');
-
+    exit();
 }
 ?>

@@ -37,28 +37,34 @@ if (isset($_SESSION['logged_user'])):
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             ?>
-						<section id="section_boutons">
-								<!-- Bouton de déconnexion -->
-								<button id="logoutButton" class="profileBouton">Déconnexion</button>
-						</section>
 
-						<section id="gd_section_profil">
-								<div id="div_infos">
-										<!-- Display user information -->
-										<p class="titre_infos">Mon pseudo :</p>
-										<p class="infos"><?php echo htmlspecialchars($row['pseudo']); ?></p>
+            <?php if (isset($_SESSION['post_modif'])) {
+              echo $_SESSION['post_modif'];
+            } ?>
+          <form id="form_modif_profil" action="traitement_modifications.php" method="post">
+              <label for="pseudo">Pseudo:</label>
+              <input type="text" id="pseudo" name="pseudo" value="<?php echo htmlspecialchars($row['pseudo']); ?>" required>
 
-										<p class="titre_infos">Mon nom :</p>
-										<p class="infos"><?php echo htmlspecialchars($row['nom']); ?></p>
+              <label for="password">Nouveau mot de passe:</label>
+              <input type="password" id="password" name="password" placeholder="Laissez vide si inchangé">
 
-										<p class="titre_infos">Mon prénom :</p>
-										<p class="infos"><?php echo htmlspecialchars($row['prenom']); ?></p>
+              <label for="nom">Nom:</label>
+              <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($row['nom']); ?>" required>
 
-										<p class="titre_infos">Je suis en :</p>
-										<p class="infos"><?php echo htmlspecialchars($row['classe']); ?></p>
-								</div>
-								<div></div>
-						</section>
+              <label for="prenom">Prénom:</label>
+              <input type="text" id="prenom" name="prenom" value="<?php echo htmlspecialchars($row['prenom']); ?>" required>
+
+              <label for="date">Date de naissance:</label>
+              <input type="date" id="date" name="date" value="<?php echo htmlspecialchars($row['date']); ?>" required>
+
+              <label for="classe">Classe:</label>
+              <input type="text" id="classe" name="classe" value="<?php echo htmlspecialchars($row['classe']); ?>" required>
+
+              <label for="avatar">Lien de l'avatar:</label>
+              <input type="text" id="avatar" name="avatar" value="<?php echo htmlspecialchars($row['avatar']); ?>" required>
+
+              <input type="submit" value="Mettre à jour">
+          </form>
 
 						<!-- Button for showing the profile edit form -->
 						<button id="modifInfosButton" class="profileBouton">Modifier mes informations personnelles</button>
