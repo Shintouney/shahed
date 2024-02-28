@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	require_once '../db_config.php';
+  $progressPercentage = 0;
 ?>
 <?php include('header.php'); ?>
 
@@ -56,7 +57,7 @@
 							echo "Vous devez être connecté pour voir votre progression.";
 					}
         ?>
-				<h4 id="progressBarProgressionId"><?php echo $progressPercentage?>%</h4>
+				<h4 id="progressBarProgressionId"><?php echo  $progressPercentage?>%</h4>
         <?php  if (isset($_SESSION['logged_user'])) { ?>
           <h3>Barre de progression</h3>
             <div id="progressContainer" class="progress-container">
