@@ -57,7 +57,7 @@
 					}
         ?>
 				<h4 id="progressBarProgressionId"><?php echo $progressPercentage?>%</h4>
-        <?php  if ($_SESSION['logged_user']) { ?>
+        <?php  if (isset($_SESSION['logged_user'])) { ?>
           <h3>Barre de progression</h3>
             <div id="progressContainer" class="progress-container">
                 <div id="progressBar" class="progress-bar">
@@ -77,7 +77,7 @@
                 </div> 
             </div>
         </main>
-    <?php  if ($_SESSION['logged_user']) { ?>
+    <?php  if (isset($_SESSION['logged_user'])) { ?>
 			<form action="traitement_progression.php" method="post">
         <button id="submitProgress">J'ai terminé</button>
 				<input type="hidden" name="module" value="module1" />

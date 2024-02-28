@@ -1,8 +1,6 @@
 <?php
 session_start();
 require_once '../db_config.php'; // Assumes this file correctly sets up the mysqli connection
-
-echo $_SESSION['erreur_creation'];
 ?>
 
 <?php include('header.php'); ?>

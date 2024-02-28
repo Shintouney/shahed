@@ -91,7 +91,7 @@ echo $_SESSION['erreur_creation'];
 			})
 
 			.then(response => {
-					window.location.href = '../../index.php';
+					window.location.href = '../index.php';
 			})
 
 			.catch(error => {
