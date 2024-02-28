@@ -57,10 +57,6 @@ if (isset($_SESSION['logged_user'])):
 
 						<!-- Button for showing the profile edit form -->
 						<a href="profil_edition.php" id="modifInfosButton" class="profileBouton">Modifier mes informations personnelles</button>
-						<!-- Button to cancel modification -->
-						<button id="annulerButton" class="profileBouton">Annuler</button>
-
-						<!-- Profile modification form -->
 						<form id="form_modif_profil" action="profil_edition.php" method="post">
 								<!-- Form fields and submission button remain unchanged -->
 						</form>
