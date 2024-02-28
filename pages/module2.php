@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	require_once '../db_config.php';
+  $progressPercentage = 0;
 ?>
 
 <?php include('header.php'); ?>
@@ -57,7 +58,7 @@
         }
       ?>
       <h4 id="progressBarProgressionId"><?php echo $progressPercentage?>%</h4>
-      <?php  if ($_SESSION['logged_user']) { ?>
+      <?php  if (isset($_SESSION['logged_user'])) { ?>
         <h3>Barre de progression</h3>
           <div id="progressContainer" class="progress-container">
               <div id="progressBar" class="progress-bar">
@@ -77,7 +78,7 @@
           <div id="65b80079bb938300148f1d22" class="genially-embed" style="margin: 0px auto; position: relative; height: auto; width: 100%;">
           </div>
       </div>
-  <?php  if ($_SESSION['logged_user']) { ?>
+  <?php  if (isset($_SESSION['logged_user'])) { ?>
     <form action="traitement_progression.php" method="post">
       <button id="submitProgress">J'ai terminé</button>
       <input type="hidden" name="module" value="module2" />
