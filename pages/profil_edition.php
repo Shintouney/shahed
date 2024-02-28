@@ -3,7 +3,6 @@ session_start();
 require_once '../db_config.php'; // Assumes this file correctly sets up the mysqli connection
 
 if (isset($_SESSION['logged_user'])):
-echo $_SESSION['erreur_creation'];
 ?>
 
 <?php include('header.php'); ?>
@@ -38,33 +37,42 @@ echo $_SESSION['erreur_creation'];
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             ?>
-						<section id="gd_section_profil">
-								<div id="div_infos">
-										<!-- Display user information -->
-										<p class="titre_infos">Mon pseudo :</p>
-										<p class="infos"><?php echo htmlspecialchars($row['pseudo']); ?></p>
 
-										<p class="titre_infos">Mon nom :</p>
-										<p class="infos"><?php echo htmlspecialchars($row['nom']); ?></p>
+            <?php if (isset($_SESSION['post_modif'])) {
+              echo $_SESSION['post_modif'];
+              $_SESSION['post_modif'];
+            } ?>
+          <form id="form_modif_profil" action="traitement_modifications.php" method="post">
+              <label for="pseudo">Pseudo:</label>
+              <input type="text" id="pseudo" name="pseudo" value="<?php echo htmlspecialchars($row['pseudo']); ?>" required>
 
-										<p class="titre_infos">Mon prénom :</p>
-										<p class="infos"><?php echo htmlspecialchars($row['prenom']); ?></p>
+              <label for="password">Nouveau mot de passe:</label>
+              <input type="password" id="password" name="password" placeholder="Laissez vide si inchangé">
 
-										<p class="titre_infos">Je suis en :</p>
-										<p class="infos"><?php echo htmlspecialchars($row['classe']); ?></p>
-								</div>
-								<div></div>
-						</section>
+              <label for="nom">Nom:</label>
+              <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($row['nom']); ?>" required>
 
-						<!-- Button for showing the profile edit form -->
-						<a href="profil_edition.php" id="modifInfosButton" class="profileBouton">Modifier mes informations personnelles</button>
-						<!-- Button to cancel modification -->
-						<button id="annulerButton" class="profileBouton">Annuler</button>
+              <label for="prenom">Prénom:</label>
+              <input type="text" id="prenom" name="prenom" value="<?php echo htmlspecialchars($row['prenom']); ?>" required>
 
-						<!-- Profile modification form -->
-						<form id="form_modif_profil" action="profil_edition.php" method="post">
-								<!-- Form fields and submission button remain unchanged -->
-						</form>
+              <label for="date">Date de naissance:</label>
+              <input type="date" id="date" name="date" value="<?php echo htmlspecialchars($row['date']); ?>" required>
+
+							<label for="classe">En quelle classe es-tu ?</label>
+							<select name="classe" id="classe">
+									<option value="cp" <?php if ($row['classe'] == 'cp') echo 'selected'; ?>>CP</option>
+									<option value="ce1" <?php if ($row['classe'] == 'ce1') echo 'selected'; ?>>CE1</option>
+									<option value="ce2" <?php if ($row['classe'] == 'ce2') echo 'selected'; ?>>CE2</option>
+									<option value="cm1" <?php if ($row['classe'] == 'cm1') echo 'selected'; ?>>CM1</option>
+									<option value="cm2" <?php if ($row['classe'] == 'cm2') echo 'selected'; ?>>CM2</option>
+									<option value="autre" <?php if ($row['classe'] == 'autre') echo 'selected'; ?>>Autre</option>
+							</select>
+
+							<label for="avatar">Avatar:</label>
+							<input type="file" name="avatar" id="avatar" accept="image/*">
+
+              <input type="submit" value="Mettre à jour">
+          </form>
             <?php
         } else {
             echo "No user found with the provided pseudo.";
@@ -86,7 +94,7 @@ echo $_SESSION['erreur_creation'];
 			})
 
 			.then(response => {
-					window.location.href = '../../index.php';
+					window.location.href = '../index.php';
 			})
 
 			.catch(error => {
