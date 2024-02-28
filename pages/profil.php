@@ -40,6 +40,7 @@ if (isset($_SESSION['logged_user'])):
 
             <?php if (isset($_SESSION['post_modif'])) {
               echo $_SESSION['post_modif'];
+              $_SESSION['post_modif'];
             } ?>
           <form id="form_modif_profil" action="traitement_modifications.php" method="post">
               <label for="pseudo">Pseudo:</label>
