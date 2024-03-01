@@ -1,6 +1,0 @@
-[18-Feb-2024 22:33:50 UTC] PHP Warning:  Undefined variable $password in /Users/hzeghouani/Downloads/shahed/zoolangue/eveil-zoolangues/pages/connexion-et-profil/traitement_creation.php on line 70
-[18-Feb-2024 22:33:50 UTC] PDO error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'password' cannot be null
-[18-Feb-2024 22:33:56 UTC] PHP Warning:  Undefined variable $password in /Users/hzeghouani/Downloads/shahed/zoolangue/eveil-zoolangues/pages/connexion-et-profil/traitement_creation.php on line 70
-[18-Feb-2024 22:33:56 UTC] PDO error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'password' cannot be null
-[18-Feb-2024 22:34:04 UTC] PHP Warning:  Undefined variable $password in /Users/hzeghouani/Downloads/shahed/zoolangue/eveil-zoolangues/pages/connexion-et-profil/traitement_creation.php on line 70
-[18-Feb-2024 22:34:04 UTC] PDO error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'password' cannot be null

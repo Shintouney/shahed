@@ -42,7 +42,7 @@ if (isset($_SESSION['logged_user'])):
               echo $_SESSION['post_modif'];
               $_SESSION['post_modif'];
             } ?>
-          <form id="form_modif_profil" action="traitement_modifications.php" method="post">
+          <form id="form_modif_profil" action="traitement_modifications.php" method="post" enctype="multipart/form-data">
               <label for="pseudo">Pseudo:</label>
               <input type="text" id="pseudo" name="pseudo" value="<?php echo htmlspecialchars($row['pseudo']); ?>" required>
 

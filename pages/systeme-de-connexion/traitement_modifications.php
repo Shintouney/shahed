@@ -2,8 +2,22 @@
 session_start();
 
 $_SESSION['post_modif'] = "Vos informations ont bien été modifié";
-
+require_once '../../vendor/autoload.php'; // Adjust the path as necessary
 require_once '../../db_config.php';
+// Cloudinary configuration
+use Cloudinary\Configuration\Configuration;
+use Cloudinary\Api\Upload\UploadApi;
+
+Configuration::instance([
+    'cloud' => [
+        'cloud_name' => 'dgjbng1b6',
+        'api_key' => '244546622457232',
+        'api_secret' => 'oTNAwI289bTrJZuBQbxN96yRCcc'
+    ],
+    'url' => [
+        'secure' => true
+    ]
+]);
 
 if (!isset($_SESSION['logged_user'])) {
     header('Location: connexion.php');
@@ -20,11 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $prenom = $_POST['prenom'] ?? '';
     $date = $_POST['date'] ?? '';
     $classe = $_POST['classe'] ?? '';
-    $avatar = $_POST['avatar'] ?? '';
 
     if (empty($pseudo) || empty($nom) || empty($prenom) || empty($date) || empty($classe)) {
         $_SESSION['modifNON'] = "Tous les champs requis doivent être remplis.";
-        header('Location: profil.php');
+        header('Location: index.php');
         exit();
     }
 
@@ -92,7 +105,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 exit();
             }
         }
-    
+		  if ($uploadedImageUrl !== null) {
+				$avatar = $uploadedImageUrl;
+			}
+
     if ($stmt = $mysqli->prepare($query)) {
         if (!empty($password)) {
             $stmt->bind_param("ssssssss", $pseudo, $password, $nom, $prenom, $date, $classe, $avatar, $_SESSION['logged_user']);
