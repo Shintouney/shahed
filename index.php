@@ -12,22 +12,22 @@
                         <img src="medias/Logo.png" height="160">
                     </div>
                     <div class="tree-bouton" id="tree-explication">
-                        <a href="explication.php">C'est quoi <br>l'éveil aux langues ?</a>
+                        <a href="pages/explication.php">C'est quoi <br>l'éveil aux langues ?</a>
                     </div>
                     <div class="tree-bouton" id="tree-ressources">
-                        <a href="ressources.php">Ressources <br>Supplémentaires</a>
+                        <a href="pages/ressources.php">Ressources <br>Supplémentaires</a>
                     </div>
                     <div class="tree-bouton" id="tree-biblio">
-                        <a href="biblio.php">Aller à la <br>Bibliothèque</a>
+                        <a href="pages/biblio.php">Aller à la <br>Bibliothèque</a>
                     </div>
                     <div class="tree-bouton" id="tree-login">
-                        <a href="connexion-et-profil/connexion.php">Se connecter </a>
+                        <a href="pages/systeme-de-connexion/connexion.php">Se connecter </a>
                     </div>
                 </div>
             </section>
             <section class="footer">
                 <div id="footer">
-                    <a href="mentions-legales.php"><img id="mentionsLegales" src="medias/mentionsLegales.png" alt="Mentions Légales" /></a>
+                    <a href="pages/mentions-legales.php"><img id="mentionsLegales" src="medias/mentionsLegales.png" alt="Mentions Légales" /></a>
                     <a href="mailto:eveilzoolangues@outlook.com"><img id="contact" src="medias/contact.png" alt="Contact"/></a>
                 </div>  
                 <div id="scroll_to_top">
